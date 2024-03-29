@@ -17,10 +17,10 @@ export default function Topup() {
             if (topic === logTopic) {
                 const log = message.toString().split(',');
                 const change = parseInt(log[0]);
-                const credit = log[1];
-                if (!isNaN(change) && !isNaN(credit)) {
+                const balance = log[1];
+                if (!isNaN(change) && !isNaN(balance)) {
                     if (change > 0) {
-                        setInfo(`TOP UP BERHASIL, SALDO Rp${credit}`);
+                        setInfo(`TOP UP BERHASIL, SALDO Rp${balance}`);
                         setTimeout(() => {
                             setInfo(``);
                         }, 3000);
