@@ -3,7 +3,7 @@ import mqtt from 'mqtt';
 
 export default function Home() {
     const [info, setInfo] = useState('');
-    const [logTopic, setLogTopic] = useState('/iot-payment/payment/log');
+    const logTopic = '/iot-payment/payment/log';
     useEffect(() => {
         const mqtt_client = mqtt.connect(`${process.env.REACT_APP_MQTT_WS_URL}`);
         mqtt_client.on('connect', () => {

@@ -4,8 +4,8 @@ import mqtt from 'mqtt';
 let mqtt_client;
 export default function Topup() {
     const [info, setInfo] = useState('');
-    const [logTopic, setLogTopic] = useState('/iot-payment/payment/log');
-    const [topupTopic, setTopupTopic] = useState('/iot-payment/balance/topup');
+    const logTopic = '/iot-payment/payment/log';
+    const topupTopic = '/iot-payment/balance/topup';
     useEffect(() => {
         mqtt_client = mqtt.connect(`${process.env.REACT_APP_MQTT_WS_URL}`);
         mqtt_client.on('connect', () => {
