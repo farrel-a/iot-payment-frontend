@@ -3,10 +3,10 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 export default function Navbar() {
     return <nav className="nav">
         <Link to="/" className="site-title">
-            IoT Payment
+            Merchant Reader
         </Link>
         <ul>
-            <CustomLink to="/ewallet">E-Wallet</CustomLink>
+            <CustomLink to="/topup">Top Up</CustomLink>
             <CustomLink to="/log">Log</CustomLink>
         </ul>
     </nav>
