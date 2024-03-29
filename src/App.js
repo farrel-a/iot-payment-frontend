@@ -1,6 +1,6 @@
 import Navbar from "./Navbar"
-import Log from "./pages/Log";
 import Home from "./pages/Home";
+import PaymentLog from "./pages/PaymentLog";
 import { Route, Routes } from "react-router-dom";
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/log" element={<Log />} />
+          <Route path="/payment_log" element={<PaymentLog/>} />
         </Routes>
       </div>
     </>
