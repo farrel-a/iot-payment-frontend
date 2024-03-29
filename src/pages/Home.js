@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import mqtt from 'mqtt';
 
+let mqtt_client;
 export default function Home() {
-    const [info, setInfo] = useState('');
+    const [info, setInfo] = useState('---');
     const logTopic = '/iot-payment/payment/log';
+    const topupTopic = '/iot-payment/balance/topup';
     useEffect(() => {
-        const mqtt_client = mqtt.connect(`${process.env.REACT_APP_MQTT_WS_URL}`);
+        mqtt_client = mqtt.connect(`${process.env.REACT_APP_MQTT_WS_URL}`);
         mqtt_client.on('connect', () => {
           console.log('Connected to MQTT broker');
           mqtt_client.subscribe(logTopic);
@@ -20,13 +22,19 @@ export default function Home() {
                     if (change < 0) {
                         setInfo(`TRANSAKSI BERHASIL, SISA SALDO Rp${balance}`);
                         setTimeout(() => {
-                            setInfo(``);
+                            setInfo(`---`);
                         }, 5000);
+                    }
+                    else if (change > 0) {
+                        setInfo(`TOP UP BERHASIL, SALDO Rp${balance}`);
+                        setTimeout(() => {
+                            setInfo(`---`);
+                        }, 3000);
                     }
                     else if (change === 0) {
                         setInfo('SALDO TIDAK MENCUKUPI');
                         setTimeout(() => {
-                            setInfo(``);
+                            setInfo(`---`);
                         }, 5000);
                     }
                 }
@@ -37,10 +45,19 @@ export default function Home() {
         };
       }, [logTopic]);
 
+    function topup(val) {
+        if (!isNaN(val) && val > 0) {
+            mqtt_client.publish(topupTopic, val.toString());
+        }
+    }
     return (
     <>
-      <h1>Merchant Reader</h1>
+      <h1>MERCHANT READER</h1>
       <h1>{info}</h1>
+      <br/><br/><br/><br/><br/><br/>
+      <input type="number" placeholder="Jumlah Top Up" id="topup_value"/>
+      <br/><br/>
+      <input type="button" value="Top Up" onClick={() => topup(document.getElementById('topup_value').value)}/>
     </>
     )
 }

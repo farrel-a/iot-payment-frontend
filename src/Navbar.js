@@ -6,7 +6,6 @@ export default function Navbar() {
             Merchant Reader
         </Link>
         <ul>
-            <CustomLink to="/topup">Top Up</CustomLink>
             <CustomLink to="/log">Log</CustomLink>
         </ul>
     </nav>
