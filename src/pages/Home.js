@@ -18,7 +18,7 @@ export default function Home() {
                 const credit = log[1];
                 if (!isNaN(change) && !isNaN(credit)) {
                     if (change < 0) {
-                        setInfo(`TRANSAKSI BERHASIL, SISA SALDO ${credit}`);
+                        setInfo(`TRANSAKSI BERHASIL, SISA SALDO Rp${credit}`);
                         setTimeout(() => {
                             setInfo(``);
                         }, 5000);
@@ -32,15 +32,6 @@ export default function Home() {
                 }
             }
         });
-    
-        mqtt_client.on('error', (error) => {
-            console.log(error);
-        });
-
-        mqtt_client.on('close', () => {
-            console.log('Disconnected from MQTT broker');
-        });
-    
         return () => {
           mqtt_client.end(true);
         };
