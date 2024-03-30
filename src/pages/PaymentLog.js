@@ -10,7 +10,7 @@ export default function PaymentLog() {
             setLogs(res.data.data);
         })
         .catch(err => {
-            console.error(err);
+            // console.error(err);
         });
     },[backend_url]);
     return (

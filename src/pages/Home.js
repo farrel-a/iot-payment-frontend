@@ -9,7 +9,7 @@ export default function Home() {
     useEffect(() => {
         mqtt_client = mqtt.connect(`${process.env.REACT_APP_MQTT_WS_URL}`);
         mqtt_client.on('connect', () => {
-          console.log('Connected to MQTT broker');
+        //   console.log('Connected to MQTT broker');
           mqtt_client.subscribe(logTopic);
         });
 
