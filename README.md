@@ -9,6 +9,7 @@ git clone https://github.com/farrel-a/iot-payment-frontend.git
 
 2. Install dependencies
 ```bash
+cd iot-payment-frontend
 npm install
 ```
 
@@ -17,7 +18,7 @@ npm install
 cp .env.template .env
 # then fill all the required environment variables in .env
 ```
-3. Run the app
+4. Run the app
 ```bash
 npm start
 ```
